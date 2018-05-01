@@ -2,7 +2,6 @@
   "name": "musicindabody",
   "description": "Music search and preview",
   "version": "0.1.0",
-  "private": true,
   "repository": "https://github.com/semd/musicindabody",
   "devDependencies": {
     "react-scripts": "1.1.4"
@@ -34,5 +33,6 @@
   "author": {
     "name" : "Sergi Massaneda",
     "url" : "https://github.com/semd"
-  }
+  },
+  "license" : "GNU v3"
 }

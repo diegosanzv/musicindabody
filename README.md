@@ -23,19 +23,11 @@ yarn
 ## Run the app
 
 ```
-npm start
-```
-or
-```
 yarn start
 ```
 
 ## Run tests
 
-```
-npm test
-```
-or
 ```
 yarn test
 ```
