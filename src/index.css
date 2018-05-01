@@ -1,0 +1,143 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.content {
+	margin-top: 10px;
+	margin-bottom: 100px;
+}
+
+.load-spinner {
+	text-align: center;
+	margin-top: 50px;
+}
+.load-spinner span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 3px solid rgba(255,255,255,.3);
+	border-radius: 50%;
+	border-top-color: #007bff;
+	animation: spin 1s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+	to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+	to { -webkit-transform: rotate(360deg); }
+}
+
+.player-component {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	font-size: 11px;
+}
+
+div.search-results ol li:nth-child(even) {
+	background: #E4E4E4;
+}
+div.search-results ol li:hover {
+	background-color: #D8D8D8;
+}
+div.search-results ol li.playing {
+	background-color: #C2D6EA;
+}
+div.search-results ol li.playing div.media .track{
+	font-weight: bold;
+}
+div.search-results ol li:hover div.media .artwork {
+	opacity: 0.8;
+}
+
+.play-button {
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	margin-top: 15px;
+}
+.play-button span.oi-media-play {
+	font-size: 16px;
+	margin-left: 4px;
+	margin-top: 4px;
+}
+.play-button span.oi-media-stop {
+	font-size: 14px;
+	margin-left: 1px;
+	margin-top: 4px;
+}
+
+
+div.media {
+	font-size: 16px;
+}
+div.media.small {
+	font-size: 14px;
+}
+div.media.small .artwork,
+div.player-controls .artwork,
+div.media.small .media-body {
+	cursor: pointer;
+}
+div.player-controls .artwork:hover {
+	opacity: 0.8;
+}
+div.media label {
+	min-width: 100px;
+	color: #888888;
+	font-weight: bold;
+	font-size: 0.9rem;
+}
+div.media .extra label {
+	font-size: 0.8rem;
+}
+div.media .track {
+	font-size: 1.2em;
+	line-height: 1.1em;
+}
+div.media .artist {
+	font-size: 1.2em;
+	line-height: 1.1em;
+}
+div.media .extra {
+	font-size: 0.9em;
+}
+div.media.small .extra {
+	font-size: 0.8em;
+}
+div.media .social-buttons button {
+	line-height: 1px;
+}
+div.media .social-buttons .SocialMediaShareButton {
+	outline: none;
+}
+
+div.media .artwork {
+	width: 100px;
+	height: 100px;
+}
+div.media.small .artwork {
+	width: 60px;
+	height: 60px;
+}
+div.player-controls .artwork {
+	width: 30px;
+	height: 30px;
+}
+audio {
+	height: 32px;
+}
+
+
+div.alert {
+	position: fixed;
+	bottom: 100px;
+	left: 20px;
+	display: inline;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "musicindabody",
+  "description": "Music in da body - play iTunes music. React/Redux app for Cornerjob technical test",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.1.4"
+  },
+  "dependencies": {
+    "history": "^4.7.2",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.1",
+    "react": "^16.3.2",
+    "react-audio-player": "^0.10.0",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-share": "^2.1.1",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "reduxsauce": "^0.7.0",
+    "superagent": "^3.8.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": {
+    "name" : "Sergi Massaneda",
+    "url" : "https://github.com/semd"
+  }
+}
