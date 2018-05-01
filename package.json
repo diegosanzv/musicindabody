@@ -1,8 +1,9 @@
 {
   "name": "musicindabody",
-  "description": "Music in da body - play iTunes music. React/Redux app for Cornerjob technical test",
+  "description": "Music search and preview",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/semd/musicindabody",
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
