@@ -36,6 +36,7 @@ yarn test
 
 * [React Redux](https://redux.js.org/basics/usage-with-react) - The web framework used
 * [reduxsauce](https://github.com/infinitered/reduxsauce) - To make it simple
+* [Bootstrap 4](https://getbootstrap.com/) - User interface toolkit
 * [iTunes API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/) - To retrieve music data
 * [Yarn](https://yarnpkg.com/) - Dependency Management
 
