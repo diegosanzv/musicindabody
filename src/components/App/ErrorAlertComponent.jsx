@@ -5,7 +5,7 @@ function ErrorAlertComponent({error, onShown}) {
 
 	// TODO: audit error.message
 
-	if (!error.display) {
+	if (!error.message) {
 		onShown();
 		return null;
 	}
@@ -27,7 +27,7 @@ function ErrorAlertComponent({error, onShown}) {
 
 	return (
 		<div className={'alert alert-' + levelClass} role="alert">
-			{error.display}
+			{error.message}
 			{closeButton}
 		</div>
 	);

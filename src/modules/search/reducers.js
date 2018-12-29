@@ -36,7 +36,13 @@ const reducerHandlers = {
 	},
 	[Types.RECEIVE_ITEMS]: (state = INITIAL_STATE, action) => {
 		return {...state,
-			items: action.error ? INITIAL_STATE.items : action.payload,
+			items: action.payload,
+			loading: false
+		};
+	},
+	[Types.REQUEST_ITEMS_ERROR]: (state = INITIAL_STATE) => {
+		return {...state,
+			items: INITIAL_STATE.items,
 			loading: false
 		};
 	},

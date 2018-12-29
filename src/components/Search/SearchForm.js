@@ -7,7 +7,7 @@ const mapStateToProps = ({search: {term, scope}}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-	onQuery: (term, scope) => dispatch(Operators.queryItems(term, scope))
+	onQuery: (term, scope) => dispatch(Operators.requestItems(term, scope))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchFormComponent);
