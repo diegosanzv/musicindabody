@@ -1,43 +1,27 @@
-import { applyMiddleware, createStore } from 'redux';
-import { createLogger } from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-
-import middleware from './middleware';
-import reducer from './reducer';
-import saga from './saga';
-
-import { routerMiddleware } from 'connected-react-router';
 import createHistory from 'history/createBrowserHistory';
+import isEqual from 'lodash/isEqual';
+
+import { getMiddleware, sagaMiddleware } from './middleware';
+import { getReducers } from './reducers';
+import sagas from './sagas';
 
 export const history = createHistory();
+
+// workarround to avoid stacking same location multiple times in history
 const historyPush = history.push;
 let lastLocation = history.location;
 history.listen(location => {
   lastLocation = location;
 });
 history.push = (pathname, state = {}) => {
-  if (
-    lastLocation === null ||
-    pathname !== lastLocation.pathname + lastLocation.search + lastLocation.hash ||
-    JSON.stringify(state) !== JSON.stringify(lastLocation.state)
-  ) {
+  const newPath = lastLocation.pathname + lastLocation.search + lastLocation.hash;
+  if (lastLocation === null || pathname !== newPath || !isEqual(state, lastLocation.state)) {
     historyPush(pathname, state);
   }
 };
 
-const connectedRouterMiddleware = routerMiddleware(history);
-const sagaMiddleware = createSagaMiddleware();
+export const store = createStore(getReducers(history), composeWithDevTools(getMiddleware(history)));
 
-const getMiddleware = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return applyMiddleware(connectedRouterMiddleware, ...middleware, sagaMiddleware);
-  } else {
-    // Enable additional logging in non-production environments.
-    return applyMiddleware(connectedRouterMiddleware, ...middleware, sagaMiddleware, createLogger())
-  }
-};
-
-export const store = createStore(reducer(history), composeWithDevTools(getMiddleware()));
-
-sagaMiddleware.run(saga);
+sagaMiddleware.run(sagas);

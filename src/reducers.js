@@ -4,7 +4,7 @@ import app from './modules/app';
 import search from './modules/search';
 import player from './modules/player';
 
-export default (history) => combineReducers({
+export const getReducers = (history) => combineReducers({
 	app,
 	search,
 	player,
