@@ -9,13 +9,6 @@ import Detail from '../Detail';
 
 class AppComponent extends React.Component {
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.redirectTo) {
-			const path = (nextProps.redirectTo !== this.props.currentPath) ? nextProps.redirectTo : null;
-			this.props.onRedirect(path);
-		}
-	}
-
 	componentWillMount() {
 		this.props.onLoad();
 	}

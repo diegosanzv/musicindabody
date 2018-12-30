@@ -7,25 +7,37 @@ import middleware from './middleware';
 import reducer from './reducer';
 import saga from './saga';
 
-
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'connected-react-router';
 import createHistory from 'history/createBrowserHistory';
 
 export const history = createHistory();
-
-// Build the middleware for intercepting and dispatching navigation actions
-const myRouterMiddleware = routerMiddleware(history);
-const sagaMiddleware = createSagaMiddleware()
-
-const getMiddleware = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return applyMiddleware(myRouterMiddleware, ...middleware, sagaMiddleware);
-  } else {
-    // Enable additional logging in non-production environments.
-    return applyMiddleware(myRouterMiddleware, ...middleware, sagaMiddleware, createLogger())
+const historyPush = history.push;
+let lastLocation = history.location;
+history.listen(location => {
+  lastLocation = location;
+});
+history.push = (pathname, state = {}) => {
+  if (
+    lastLocation === null ||
+    pathname !== lastLocation.pathname + lastLocation.search + lastLocation.hash ||
+    JSON.stringify(state) !== JSON.stringify(lastLocation.state)
+  ) {
+    historyPush(pathname, state);
   }
 };
 
-export const store = createStore(reducer, composeWithDevTools(getMiddleware()));
+const connectedRouterMiddleware = routerMiddleware(history);
+const sagaMiddleware = createSagaMiddleware();
+
+const getMiddleware = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return applyMiddleware(connectedRouterMiddleware, ...middleware, sagaMiddleware);
+  } else {
+    // Enable additional logging in non-production environments.
+    return applyMiddleware(connectedRouterMiddleware, ...middleware, sagaMiddleware, createLogger())
+  }
+};
+
+export const store = createStore(reducer(history), composeWithDevTools(getMiddleware()));
 
 sagaMiddleware.run(saga);

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router';
 import app from './modules/app';
 import search from './modules/search';
 import player from './modules/player';
 
-export default combineReducers({
+export default (history) => combineReducers({
 	app,
 	search,
 	player,
-	router: routerReducer
+	router: connectRouter(history)
 });

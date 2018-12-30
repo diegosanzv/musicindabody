@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import DetailComponent from './DetailComponent';
-import { Operators as AppOperators } from '../../modules/app';
+import { push } from 'connected-react-router';
 
 const mapStateToProps = ({search: {selectedItem: item, selectedItemIndex: index}}) => {
 	return {item, index};
 };
 
 const mapDispatchToProps = dispatch => ({
-	redirectSearch: () => dispatch(AppOperators.redirect('/search'))
+	redirectSearch: () => dispatch(push('/search'))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailComponent);
